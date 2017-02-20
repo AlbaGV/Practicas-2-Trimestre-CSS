@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta charset=utf-8" />
+<title>Untitled Document</title>
+<style>
+	#DemoGradient{  
+	
+    text-align: center;
+
+	background: -webkit-linear-gradient(
+		top,  #959595 0%,
+		#0d0d0d 46%,
+		#010101 50%,
+		#0a0a0a 53%,
+		#4e4e4e 76%,
+		#383838 87%,
+		#1b1b1b 100%);
+
+
+    border-radius: 29px;  
+    border: 3px solid #333333;  
+    cursor:pointer;  
+    width: 293px;  
+    height: 155px;  
+	}  
+	
+	hr{
+		margin-left: 39px;
+		margin-right: 39px;
+		background-color:grey;
+		border-color:grey;
+		border-width: 0.1px;
+		margin-top: 1px;
+		margin-bottom: 1px;
+	}
+	strong{
+		color:white;
+		text-shadow: 0.1em 0.1em #333;
+	}
+	
+	
+	span{
+			background-image: url("btns.png");
+			background-repeat: no-repeat;
+			width:42px;
+			height:43px;
+			display: inline-block;
+			vertical-align: middle;
+		}
+		#play{
+		background-position: 0px 1px;
+		}
+		#pause{
+		
+		background-position: -40px 0px;
+		}
+		#stop{
+		
+		background-position: -79px 0px;
+		}
+		#menos{
+	
+		background-position: -159px 0px;
+		}
+		#mas{
+		
+		background-position: -120px 0px;
+		}
+		#play:hover{
+		background-position: 0px -39px;
+		}
+		#pause:hover{
+		
+		background-position: -40px -40px;
+		}
+		#stop:hover{
+		
+		background-position: -79px -40px;
+		}
+		#menos:hover{
+	
+		background-position: -159px -40px;
+		}
+		#mas:hover{
+		
+		background-position: -120px -40px;
+		
+		}
+</style>
+
+</head>
+<body>
+
+<audio id="player" src="Yuri on ICE - Single [Yuri!!! on Ice].mp3">
+
+</audio>
+
+<div id="DemoGradient">
+<strong>Reproductor</strong>
+<hr>
+<span id="play" onClick="document.getElementById('player').play();"></span><span id="pause" onClick="document.getElementById('player').pause();"></span><span id="stop" onClick="document.getElementById('player').currentTime=0;"></span><span id="menos" onclick="document.getElementById('player').volume -= 0.1;"></span><span id="mas" onclick="document.getElementById('player').volume += 0.1;"></span>
+<img src="altavoz.png">
+</div>
+
+<p id="currenttime"></p>
+
+
+</body>
+<script>
+
+var textcurrenttime = document.getElementById("currenttime");
+
+document.getElementById('player').addEventListener("timeupdate", 
+ function(){textcurrenttime.innerHTML = "Reproduccion: " + convertTime(document.getElementById('player').currentTime);}, 
+ false);
+ 
+ function convertTime(org){
+ var minute = Math.floor(org/60) % 60;
+ var second = Math.floor(org%60);
+ return( minute + ' : ' + second);
+}
+
+</script>
+</html>
